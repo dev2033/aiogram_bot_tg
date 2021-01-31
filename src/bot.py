@@ -15,9 +15,13 @@ dp = Dispatcher(bot)
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message) -> None:
     """Отправляет приветственное сообщение и помощь по боту"""
-    first_msg = text(bold("Привет"))
-    await message.answer(first_msg, parse_mode=ParseMode.MARKDOWN)
-
+    with open('music.mp3', "rb") as m:
+        music = m.read()
+    await bot.send_audio(message.chat.id, audio=music, title='Отражение',
+                         performer='Король и Шут')
+    with open('main.txt', 'rb') as file:
+        doc = file.read()
+    await bot.send_document(message.chat.id, document=doc)
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
