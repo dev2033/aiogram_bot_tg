@@ -1,0 +1,12 @@
+venv
+venv/
+env/
+*.pyc
+.idea/
+debug.json
+debug.log
+*.png
+__pycache__/
+env
+*.zip
+*.db
